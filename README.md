@@ -1,5 +1,7 @@
 # Merise-MCD-MLD-MPD
 
+---
+
 ##### Contexte du projet
 
 Les formations sont organisés en modules.
@@ -42,4 +44,40 @@ Revue des diagrammes sur le dépôt Git.
     - Un MLD
     - Un MPD
     - Un script SQL de la base de données
+--- 
+# Brief
 
+## Règles de gestion
+
+### Utilisateurs
+
+- Un utilisateur doit renseigner un **prénom**, un **nom**, une **adresse** et **date de naissance**;
+
+- Les utilisateurs ont soit un **rôle** d'enseignant ( **teacher** ) ou un rôle d'apprenant ( **student** );
+
+- Les utilisateurs ont un ***rôle "user" par défaut*** tant qu'ils n'ont pas renseigner un rôle;
+
+### Professeurs
+
+- Chaque professeur à un **code d'enseignant** unique;
+
+- Un professeur peut créer une nouvelle formation:
+
+- Un professeur peut ajouter des modules de formation existents à la sienne ou en créer de nouveaux;
+
+- Un module de formation doit contenir obligatoirement un **text**, la **vidéo** et l'**image** sont optionnelles;
+
+- Les modules sont reliés à leurs auteurs ( professeurs ). Une formation peut donc contenir des modules postés par plusieurs professeurs;
+
+
+- Les modules sont liés à un ou plusieurs **tags**, ils ont pour but d'indiquer les notions enseignées dans un module;
+
+- Les chapitres d'une formation sont donc divisés en modules, ils sont donc caractérisé par un marquage sémantique;
+
+### Etudiants
+
+- Un étudiant possède un **code d'étudiant unique**;
+
+- Un étudiant peut suivre une à plusieurs formations;
+
+- Un étudiant peut compléter les modules de ces formations suivies, il peut le faire de manière arbitraire si il a déjà acquis la compétence enseignée dans un module;
