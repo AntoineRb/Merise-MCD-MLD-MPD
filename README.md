@@ -110,3 +110,129 @@ Revue des diagrammes sur le dépôt Git.
 | ``Tags`` | **tag**    | uuid        | ***Identifiant*** du module| 123e4567-e89b-12d3-a456-426614174000
 | ``Tags`` | **name**    | Varchar(30) | ***Nom*** du tag               | Git
 
+---
+
+# MCD
+<img src="./diagrams/ECF_MCD.png">
+
+# MLD
+<img src="./diagrams/ECF_MLD.png">
+
+# MPD
+
+```SQL
+CREATE TABLE Tags(
+   tag VARCHAR(36) ,
+   name VARCHAR(30)  NOT NULL,
+   PRIMARY KEY(tag),
+   UNIQUE(name)
+);
+
+CREATE TABLE content(
+   content VARCHAR(36) ,
+   text TEXT,
+   video_url VARCHAR(2048) ,
+   image_url VARCHAR(2048) ,
+   PRIMARY KEY(content)
+);
+
+CREATE TABLE formation(
+   formation VARCHAR(36) ,
+   name VARCHAR(200)  NOT NULL,
+   PRIMARY KEY(formation)
+);
+
+CREATE TABLE role(
+   role VARCHAR(36) ,
+   name CHAR(50)  NOT NULL,
+   PRIMARY KEY(role),
+   UNIQUE(name)
+);
+
+CREATE TABLE Lessons(
+   lesson VARCHAR(36) ,
+   title VARCHAR(50)  NOT NULL,
+   objective VARCHAR(50)  NOT NULL,
+   duration INTEGER NOT NULL,
+   content VARCHAR(36)  NOT NULL,
+   PRIMARY KEY(lesson),
+   FOREIGN KEY(content) REFERENCES content(content)
+);
+
+CREATE TABLE users(
+   user_id VARCHAR(36) ,
+   firstname VARCHAR(50)  NOT NULL,
+   lastname VARCHAR(50)  NOT NULL,
+   birthdate DATE NOT NULL,
+   address VARCHAR(200)  NOT NULL,
+   role VARCHAR(36)  NOT NULL,
+   PRIMARY KEY(user_id),
+   FOREIGN KEY(role) REFERENCES role(role)
+);
+
+CREATE TABLE teachers(
+   code VARCHAR(36) ,
+   user_id VARCHAR(36)  NOT NULL,
+   PRIMARY KEY(code),
+   UNIQUE(user_id),
+   FOREIGN KEY(user_id) REFERENCES users(user_id)
+);
+
+CREATE TABLE students(
+   code VARCHAR(36) ,
+   user_id VARCHAR(36)  NOT NULL,
+   PRIMARY KEY(code),
+   UNIQUE(user_id),
+   FOREIGN KEY(user_id) REFERENCES users(user_id)
+);
+
+CREATE TABLE Linked(
+   lesson VARCHAR(36) ,
+   tag VARCHAR(36) ,
+   PRIMARY KEY(lesson, tag),
+   FOREIGN KEY(lesson) REFERENCES Lessons(lesson),
+   FOREIGN KEY(tag) REFERENCES Tags(tag)
+);
+
+CREATE TABLE contain(
+   lesson VARCHAR(36) ,
+   formation VARCHAR(36) ,
+   chapter NUMERIC(4,1)   NOT NULL,
+   PRIMARY KEY(lesson, formation),
+   FOREIGN KEY(lesson) REFERENCES Lessons(lesson),
+   FOREIGN KEY(formation) REFERENCES formation(formation)
+);
+
+CREATE TABLE write(
+   formation VARCHAR(36) ,
+   code VARCHAR(36) ,
+   PRIMARY KEY(formation, code),
+   FOREIGN KEY(formation) REFERENCES formation(formation),
+   FOREIGN KEY(code) REFERENCES teachers(code)
+);
+
+CREATE TABLE adding(
+   lesson VARCHAR(36) ,
+   code VARCHAR(36) ,
+   PRIMARY KEY(lesson, code),
+   FOREIGN KEY(lesson) REFERENCES Lessons(lesson),
+   FOREIGN KEY(code) REFERENCES teachers(code)
+);
+
+CREATE TABLE learn(
+   formation VARCHAR(36) ,
+   code VARCHAR(36) ,
+   PRIMARY KEY(formation, code),
+   FOREIGN KEY(formation) REFERENCES formation(formation),
+   FOREIGN KEY(code) REFERENCES students(code)
+);
+
+CREATE TABLE Complete(
+   lesson VARCHAR(36) ,
+   code VARCHAR(36) ,
+   success BOOLEAN NOT NULL,
+   PRIMARY KEY(lesson, code),
+   FOREIGN KEY(lesson) REFERENCES Lessons(lesson),
+   FOREIGN KEY(code) REFERENCES students(code)
+);
+```
