@@ -45,7 +45,10 @@ Revue des diagrammes sur le dépôt Git.
     - Un MPD
     - Un script SQL de la base de données
 --- 
-# Brief
+# Merise
+*`` Méthode d'étude et de réalisation informatique pour les sytèmes d'entreprise ``*
+
+Le principe de Merise est de ***séparer les données des traitements***. L'organisation des données semble donc plus pérenne que la définition des traitemens, car ils évoluent en fonction des utilisateurs, de l'évolution des métiers ainsi que des fonctions.
 
 ## Règles de gestion
 
