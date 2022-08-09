@@ -112,14 +112,39 @@ Revue des diagrammes sur le dépôt Git.
 
 ---
 
-# MCD
+***Les MCD, MLD et MPD suivant ont été mis en place pour le SGBDR PostgreSQL```***
+
+# MCD 
+###### Modèle Conceptuel
 <img src="./diagrams/ECF_MCD.png">
 
-# MLD
+# MPD
+###### Modèle Physique
 <img src="./diagrams/ECF_MLD.png">
 
-# MPD
+# MLD
+###### Modèle Logique
+***Représentation textuelle du MPD***
 
+```
+Tags = (tag VARCHAR(36) , name VARCHAR(30) );
+content = (content VARCHAR(36) , text TEXT, video_url VARCHAR(2048) , image_url VARCHAR(2048) );
+formation = (formation VARCHAR(36) , name VARCHAR(200) );
+role = (role VARCHAR(36) , name CHAR(50) );
+Lessons = (lesson VARCHAR(36) , title VARCHAR(50) , objective VARCHAR(50) , duration INTEGER, #content);
+users = (user_id VARCHAR(36) , firstname VARCHAR(50) , lastname VARCHAR(50) , birthdate DATE, address VARCHAR(200) , #role);
+teachers = (code VARCHAR(36) , #user_id);
+students = (code VARCHAR(36) , #user_id);
+Linked = (#lesson, #tag);
+contain = (#lesson, #formation, chapter NUMERIC(4,1)  );
+write = (#formation, #code);
+adding = (#lesson, #code);
+learn = (#formation, #code);
+Complete = (#lesson, #code, success BOOLEAN);
+
+```
+
+# Script SQl
 ```SQL
 CREATE TABLE Tags(
    tag VARCHAR(36) ,
