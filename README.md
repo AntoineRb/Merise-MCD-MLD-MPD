@@ -61,7 +61,7 @@ Revue des diagrammes sur le dépôt Git.
 
 - Chaque professeur à un **code d'enseignant** unique;
 
-- Un professeur peut créer une nouvelle formation:
+- Un professeur peut créer plusieurs formations;
 
 - Un professeur peut ajouter des modules de formation existents à la sienne ou en créer de nouveaux;
 
@@ -80,4 +80,33 @@ Revue des diagrammes sur le dépôt Git.
 
 - Un étudiant peut suivre une à plusieurs formations;
 
-- Un étudiant peut compléter les modules de ces formations suivies, il peut le faire de manière arbitraire si il a déjà acquis la compétence enseignée dans un module;
+- Un étudiant peut compléter les modules de ces formations suivies, il peut le faire de manière arbitraire si il a déjà acquis la compétence enseigné dans un module;
+
+---
+
+# Dictionnaire de données
+
+| Entités   |       Propriétés      |    Types    |               Description                |    Exemple    |
+|-----------|-----------------------|-------------|------------------------------------------| --------------|
+| ``Users`` | **user_id**           | uuid | ***Identifiant*** de l'utilisateur              |123e4567-e89b-12d3-a456-426614174000
+| ``Users`` | **firstname**         | Varchar(50) | ***Prénom*** de l'utilisateur            | John
+| ``Users`` | **lastname**          | Varchar(50) | ***Nom*** de l'utilisateur               | Doe
+| ``Users`` | **birthdate**         | Date        | ***Date de naissance*** de l'utilisateur | 20/05/1984
+| ``Users`` | **address**           | Varchar(200)| ***Adresse*** de l'utilisateur           | 50 rue de l'égalité, 59000 Lille, France.
+| ``Role``  | **role**              | uuid        | ***Identifiant*** du role                | 123e4567-e89b-12d3-a456-426614174000
+| ``Role``  | **name**              | Varchar(36) | ***Nom*** du role                        | Teacher
+| ``teacher`` | **code**            | uuid        | ***Identifiant*** du professeur          | 123e4567-e89b-12d3-a456-426614174000
+| ``student`` | **code**            | uuid        | ***Identifiant*** de l'élève             | 123e4567-e89b-12d3-a456-426614174000
+| ``Complete`` | **success**   | Boolean        | ***Statut*** d'avancement d'un module d'un élève ( complet, incomplet ) | true / false
+| ``Formation`` | **formation**   | uuid        | ***Identifiant*** de la formation | 123e4567-e89b-12d3-a456-426614174000
+| ``Formation`` | **name**   | Varchar(200)        | ***Nom*** de la formation | Les bases de Git en 10 modules !
+| ``Contain`` | **chapter**    | Decimal(4,1) | ***Numéro de Chapitre*** ( semantic versioning) d'un module dans une formation               | 12.3
+| ``Modules`` | **module**   | uuid        | ***Identifiant*** du module| 123e4567-e89b-12d3-a456-426614174000
+| ``Modules`` | **title**   | Varchar(200)        | ***titre*** du module | Installer le CLI de Git
+| ``Content`` | **content**   | uuid        | ***Identifiant*** du module| 123e4567-e89b-12d3-a456-426614174000
+| ``Content`` | **text**   | TEXT        | ***Contenu*** du module | *Contenu écrit complet d'un module de formation...*
+| ``Content`` | **video_url**   | Varchar(2048)        | ***URL***  d'une vidéo à diffuser dans le module  |https://foo.com/gtv-videos-bucket/sample/foo.mp4
+| ``Content`` | **image_url**   | Varchar(2048)        | ***URL***  d'une image à afficher dans le module  |https://foo.com/gtv-images-bucket/sample/foo.png
+| ``Tags`` | **tag**    | uuid        | ***Identifiant*** du module| 123e4567-e89b-12d3-a456-426614174000
+| ``Tags`` | **name**    | Varchar(30) | ***Nom*** du tag               | Git
+
