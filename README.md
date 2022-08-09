@@ -48,7 +48,7 @@ Revue des diagrammes sur le dépôt Git.
 # Merise
 *`` Méthode d'étude et de réalisation informatique pour les systèmes d'entreprise ``*
 
-Le principe de Merise est de ***séparer les données des traitements***. L'organisation des données semble donc plus pérenne que la définition des traitemens, car ils évoluent en fonction des utilisateurs, de l'évolution des métiers ainsi que des fonctions.
+Le principe de Merise est de ***séparer les données des traitements***. L'organisation des données semble donc plus pérenne que la définition des traitements, car ils évoluent en fonction des utilisateurs, de l'évolution des métiers ainsi que des fonctionnalités.
 
 ## Règles de gestion
 
