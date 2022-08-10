@@ -266,7 +266,7 @@ CREATE TABLE Complete(
 );
 ```
 
-Une fois les tables crées en base de données nous pouvons consulter le Diagram généré par notre interface de gestion de base de données ( ***DBeaver*** ):
+Une fois les tables crées en base de données grâce au script SQL ci-dessus, nous pouvons consulter le Diagramme généré par notre interface de gestion de base de données ( ***DBeaver*** ):
 
 
 <img src="./diagrams/DBeaver.png">
