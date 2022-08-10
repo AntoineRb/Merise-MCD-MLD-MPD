@@ -119,15 +119,13 @@ Le principe de Merise est de ***séparer les données des traitements***. L'orga
 
 # MCD 
 ###### Modèle Conceptuel
-<img src="./diagrams/ECF_MCD.png">
-
-# MPD
-###### Modèle Physique
-<img src="./diagrams/ECF_MLD.png">
+<img src="./diagrams/MCD.png">
 
 # MLD
 ###### Modèle Logique
-***Représentation textuelle du MPD***
+<img src="./diagrams/MLD.png">
+
+***Représentation textuelle du MLD***
 
 ```
 Tags = (tag VARCHAR(36) , name VARCHAR(30) );
@@ -147,7 +145,10 @@ Complete = (#lesson, #code, success BOOLEAN);
 
 ```
 
-# Script SQl
+# MPD
+###### Modèle Physique
+
+### Script SQl
 ```SQL
 CREATE TABLE Tags(
    tag VARCHAR(36) ,
