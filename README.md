@@ -265,3 +265,8 @@ CREATE TABLE Complete(
    FOREIGN KEY(code) REFERENCES students(code)
 );
 ```
+
+Une fois les tables crées en base de données nous pouvons consulter le Diagram généré par notre interface de gestion de base de données ( ***DBeaver*** ):
+
+
+<img src="./diagrams/DBeaver.png">
